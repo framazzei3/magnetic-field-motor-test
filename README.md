@@ -3,7 +3,7 @@
 This repository contains a MATLAB script for automated angular scans of a motor under different magnetic field conditions, synchronizing torque measurements (DigiVision) with current acquisition (PSU) and angular positioning (Zaber stage).
 
 ## Requirements
-
+---
 ### Software
 
 - MATLAB (with Instrument Control Toolbox)
@@ -13,9 +13,7 @@ This repository contains a MATLAB script for automated angular scans of a motor 
 - DigiVision software  
 [  https://www.burster.com/en/sensor-signal-processing/software/digivision
 ](https://www.burster.com/products/sensors/torque-sensors)
-### MATLAB requirements
-- Instrument Control Toolbox
-- Java enabled (for keyboard automation via `Robot` class)
+
 
 ---
 
