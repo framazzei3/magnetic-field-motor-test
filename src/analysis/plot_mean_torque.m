@@ -42,17 +42,6 @@ for rep = 1:2
     end
 end
 
-% ── correction: rep1 angles shifted by +90° ─────────────────────
-% (motor was physically mirrored between rep1 and rep2)
-for fi = 1:length(fields_mT)
-    for fn = {'off','on'}
-        d = data(1,fi).(fn{1});
-        d = circshift(d, 9);   % shift +90°: lo 0° diventa il nuovo 90°
-        d(end) = d(1);         % chiudi 0°=360°
-        data(1,fi).(fn{1}) = d;
-    end
-end
-
 % ── baseline subtraction: remove 0mT offset ─────────────────────────────
 % 0mT OFF subtracted from all OFF curves, 0mT ON from all ON curves
 for rep = 1:2
@@ -62,6 +51,17 @@ for rep = 1:2
     for fi = 1:length(fields_mT)
         data(rep, fi).off = data(rep, fi).off - baseline_off;
         data(rep, fi).on  = data(rep, fi).on  - baseline_on;
+    end
+end
+
+% ── correction: rep1 angles shifted by +90° ─────────────────────
+% (motor was physically mirrored between rep1 and rep2)
+for fi = 1:length(fields_mT)
+    for fn = {'off','on'}
+        d = data(1,fi).(fn{1});
+        d =circshift(d(1:end-1),9);
+        d(end+1) = d(1);
+        data(1,fi).(fn{1}) = d;
     end
 end
 
